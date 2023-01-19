@@ -19,6 +19,7 @@ def get_new_username():
     filename = 'username.json'
     with open(filename, 'w') as f:
         json.dump(username, f)
+    return username
 
 
 def greet_user():
