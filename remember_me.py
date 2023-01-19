@@ -9,6 +9,16 @@ def get_stored_username():
             username = json.load(f)
     except FileNotFoundError:
         return None
+    else:
+        return username
+
+
+def get_new_username():
+    # Ask user`s name
+    username = input('What is your name? ')
+    filename = 'username.json'
+    with open(filename, 'w') as f:
+        json.dump(username, f)
 
 
 def greet_user():
@@ -17,11 +27,8 @@ def greet_user():
     if username:
         print(f'Welcome back, {username}!')
     else:
-        username = input('What is your name? ')
-        filename = 'username.json'
-        with open(filename, 'w') as f:
-            json.dump(username, f)
-            print(f'We`ll remember you when you come back, {username}!')
+        username = get_new_username()
+        print(f'We`ll remember you when you come back, {username}!')
 
 
 greet_user()
